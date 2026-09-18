@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        INNOVXTHON<span>2026</span>
+    </div>
+
+    <a href="{{ url_for('admin_logout') }}"
+       class="logout-link">
+        Logout
+    </a>
+
+</header>
+
+
+<main class="admin-page">
+
+    <section class="admin-heading">
+
+        <div>
+
+            <div class="small-label">
+                ADMIN DASHBOARD
+            </div>
+
+            <h1>
+                Problem Allocation
+            </h1>
+
+        </div>
+
+        <div class="admin-actions">
+
+            <a
+                href="{{ url_for('generate_pdf') }}"
+                class="primary-action">
+                ↓ Download PDF
+            </a>
+
+            <form
+                action="{{ url_for('reset_allocations') }}"
+                method="POST"
+                onsubmit="return confirm(
+                    'Reset ALL problem allocations?'
+                );">
+
+                <button
+                    type="submit"
+                    class="danger-action">
+                    Reset All
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- STAT CARDS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <span>
+                TOTAL TEAMS
+            </span>
+
+            <strong>
+                {{ total_teams }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                ALLOCATED
+            </span>
+
+            <strong>
+                {{ total_allocated }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                REMAINING
+            </span>
+
+            <strong>
+                {{ total_teams - total_allocated }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                PROBLEMS
+            </span>
+
+            <strong>
+                20
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROBLEM STATUS -->
+
+    <section class="admin-section">
+
+        <div class="section-title">
+            Problem Statement Status
+        </div>
+
+        <div class="admin-problems">
+
+            {% for problem in problems %}
+
+            <div class="admin-problem-row">
+
+                <div class="admin-problem-code">
+                    {{ problem["code"] }}
+                </div>
+
+                <div class="admin-problem-title">
+                    {{ problem["title"] }}
+                </div>
+
+                <div class="admin-progress">
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-fill"
+                            style="width:
+                            {{ (problem["selected_count"] / max_teams * 100)|int }}%">
+                        </div>
+
+                    </div>
+
+                    <span>
+                        {{ problem["selected_count"] }}/{{ max_teams }}
+                    </span>
+
+                </div>
+
+                {% if problem["selected_count"] >= max_teams %}
+
+                    <span class="status locked">
+                        LOCKED
+                    </span>
+
+                {% else %}
+
+                    <span class="status available">
+                        AVAILABLE
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ALLOCATION TABLE -->
+
+    <section class="admin-section">
+
+        <div class="section-title">
+            Team Allocations
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Team No.</th>
+                        <th>Problem</th>
+                        <th>Title</th>
+                        <th>Selected At</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for row in allocations %}
+
+                    <tr>
+
+                        <td>
+                            <strong>
+                                {{ row["team_no"] }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            {{ row["code"] }}
+                        </td>
+
+                        <td>
+                            {{ row["title"] }}
+                        </td>
+
+                        <td>
+                            {{ row["selected_at"] }}
+                        </td>
+
+                    </tr>
+
+                {% else %}
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="empty">
+                            No teams have selected a problem yet.
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Selection Confirmed | InnovXthon</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="success-page">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <div class="small-label">
+            SELECTION CONFIRMED
+        </div>
+
+        <h1>
+            You're all set.
+        </h1>
+
+        <p>
+            Team <strong>{{ team_no }}</strong>
+            has successfully selected:
+        </p>
+
+        <div class="selected-problem">
+
+            <div class="selected-code">
+                {{ problem["code"] }}
+            </div>
+
+            <h2>
+                {{ problem["title"] }}
+            </h2>
+
+        </div>
+
+        <div class="locked-message">
+            🔒 This selection is locked for your team.
+        </div>
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="home-btn">
+            Done
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

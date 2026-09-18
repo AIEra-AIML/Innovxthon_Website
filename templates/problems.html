@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Select Problem | InnovXthon</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        INNOVXTHON<span>2026</span>
+    </div>
+
+    <div class="team-pill">
+        {{ team_no }}
+    </div>
+
+</header>
+
+
+<main class="problem-page">
+
+    <section class="page-heading">
+
+        <div>
+            <div class="small-label">
+                PROBLEM STATEMENT SELECTION
+            </div>
+
+            <h1>
+                Choose your challenge.
+            </h1>
+
+            <p>
+                Select one problem statement for your team.
+                Each problem can be selected by a maximum of
+                {{ max_teams }} teams.
+            </p>
+        </div>
+
+        <div class="live-status">
+            <span class="live-dot"></span>
+            Live Availability
+        </div>
+
+    </section>
+
+
+    <section class="problem-grid" id="problemGrid">
+
+        {% for problem in problems %}
+
+        <article
+            class="problem-card"
+            id="problem-{{ problem.id }}"
+            data-problem-id="{{ problem.id }}"
+        >
+
+            <div class="card-top">
+
+                <span class="problem-code">
+                    {{ problem.code }}
+                </span>
+
+                <span class="count"
+                      id="count-{{ problem.id }}">
+                    0 / {{ max_teams }}
+                </span>
+
+            </div>
+
+
+            <h2>
+                {{ problem.title }}
+            </h2>
+
+
+            <div class="description">
+                {{ problem.description }}
+            </div>
+
+
+            <button
+                class="details-btn"
+                onclick="showDetails(
+                    '{{ problem.code }}',
+                    `{{ problem.title }}`,
+                    `{{ problem.description }}`
+                )"
+            >
+                View Details
+            </button>
+
+
+            <button
+                class="select-btn"
+                id="select-{{ problem.id }}"
+                onclick="selectProblem({{ problem.id }})"
+            >
+                Select Problem
+                <span>→</span>
+            </button>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+</main>
+
+
+<!-- DETAILS MODAL -->
+
+<div class="modal-overlay"
+     id="detailsModal">
+
+    <div class="modal">
+
+        <button
+            class="modal-close"
+            onclick="closeDetails()">
+            ×
+        </button>
+
+        <div class="modal-code"
+             id="modalCode">
+        </div>
+
+        <h2 id="modalTitle">
+        </h2>
+
+        <p id="modalDescription">
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- CONFIRMATION MODAL -->
+
+<div class="modal-overlay"
+     id="confirmModal">
+
+    <div class="modal confirmation-modal">
+
+        <div class="confirm-icon">
+            ?
+        </div>
+
+        <h2>
+            Confirm Selection
+        </h2>
+
+        <p>
+            Are you sure you want to select this
+            problem statement?
+        </p>
+
+        <div class="confirm-actions">
+
+            <button
+                class="cancel-btn"
+                onclick="closeConfirm()">
+                Cancel
+            </button>
+
+            <button
+                class="confirm-btn"
+                id="confirmButton">
+                Confirm Selection
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/problems.js') }}"></script>
+
+</body>
+</html>

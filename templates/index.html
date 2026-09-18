@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>InnovXthon 2026</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="hero">
+
+        <div class="badge">
+            INNOVXTHON 2026
+        </div>
+
+        <h1>
+            Problem Statement<br>
+            <span>Selection</span>
+        </h1>
+
+        <p>
+            Enter your team number to access the available
+            problem statements.
+        </p>
+
+        <form action="{{ url_for('team_login') }}"
+              method="POST"
+              class="team-form">
+
+            <label>TEAM NUMBER</label>
+
+            <input
+                type="text"
+                name="team_no"
+                placeholder="INX 01"
+                required
+                autocomplete="off"
+            >
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <button type="submit">
+                Continue
+                <span>→</span>
+            </button>
+
+        </form>
+
+        <div class="info">
+            <span>20 Problem Statements</span>
+            <span>•</span>
+            <span>Maximum 2 Teams / Problem</span>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
