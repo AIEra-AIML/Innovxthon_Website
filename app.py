@@ -113,49 +113,24 @@ PROBLEMS = [
     },
     {
         "code": "PS12",
-        "title": "Automatic Image Understanding",
-        "description": """People may need textual descriptions of images for accessibility, documentation, or content understanding. Develop a solution that analyzes an image and generates a meaningful natural-language description of the important objects, actions, and context present in it."""
-    },
-    {
-        "code": "PS13",
         "title": "Automated Scenario Analysis and Reporting",
         "description": """Analyzing complex scenarios and preparing structured reports can require significant manual effort. Develop a solution that accepts a scenario or set of inputs, identifies important observations, summarizes the situation, and generates a structured report with relevant findings."""
     },
     {
-        "code": "PS14",
+        "code": "PS13",
         "title": "Real-Time Event Crowd Monitoring",
         "description": """Large events can experience overcrowding in specific areas, making it difficult for organizers to respond quickly. Develop a solution that analyzes available camera or event data to identify crowded zones, visualize crowd density, and provide alerts when predefined thresholds are reached."""
     },
     {
-        "code": "PS15",
+        "code": "PS14",
         "title": "Intelligent Task and Reminder Management",
         "description": """People often miss deadlines or forget important tasks because their responsibilities are spread across multiple activities. Develop a solution that helps users organize tasks, set priorities and deadlines, and receive appropriate reminders based on their schedules."""
     },
     {
-        "code": "PS16",
-        "title": "Context-Aware Text Rewriting",
-        "description": """A message that is appropriate in one situation may not be suitable for another audience or communication style. Develop a solution that understands the intended context of a given text and rewrites it according to requirements such as professional, formal, friendly, casual, or concise communication."""
-    },
-    {
-        "code": "PS17",
-        "title": "Visual Age and Gender Estimation",
-        "description": """Analyzing demographic characteristics from visual data can be useful in certain computer vision applications. Develop a prototype that analyzes an image or camera input and estimates an age group and apparent gender presentation, while clearly displaying the prediction."""
-    },
-    {
-        "code": "PS18",
+        "code": "PS15",
         "title": "Constraint-Based Timetable Generation",
         "description": """Creating academic timetables manually requires balancing subjects, faculty availability, classrooms, periods, and scheduling constraints. Develop a solution that generates a timetable from the given requirements while minimizing scheduling conflicts and highlighting any constraints that cannot be satisfied."""
     },
-    {
-        "code": "PS19",
-        "title": "Intelligent Internship and Job Matching",
-        "description": """Students often spend significant time searching for internships and jobs that match their skills and interests. Develop a solution that compares a user's profile or resume with available opportunities and identifies relevant internships or jobs based on skills, qualifications, interests, and role requirements."""
-    },
-    {
-        "code": "PS20",
-        "title": "Intelligent Spam Message Detection",
-        "description": """Users receive unwanted messages through email, SMS, and online platforms, making it difficult to distinguish legitimate communication from spam. Develop a solution that analyzes message content and classifies it as spam or legitimate, while providing useful indicators for the classification."""
-    }
 ]
 
 
