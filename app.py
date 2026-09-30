@@ -43,7 +43,7 @@ DATABASE = "database.db"
 TOTAL_TEAMS = int(os.environ.get("TOTAL_TEAMS", "40"))
 
 # Maximum teams allowed for one problem statement
-MAX_TEAMS_PER_PROBLEM = 2
+MAX_TEAMS_PER_PROBLEM = 3
 
 # Admin password
 ADMIN_PASSWORD = os.environ.get(
