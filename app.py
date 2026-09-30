@@ -43,7 +43,7 @@ DATABASE = "database.db"
 TOTAL_TEAMS = int(os.environ.get("TOTAL_TEAMS", "40"))
 
 # Maximum teams allowed for one problem statement
-MAX_TEAMS_PER_PROBLEM = 3
+MAX_TEAMS_PER_PROBLEM = 2
 
 # Admin password
 ADMIN_PASSWORD = os.environ.get(
@@ -130,6 +130,16 @@ PROBLEMS = [
         "code": "PS15",
         "title": "Constraint-Based Timetable Generation",
         "description": """Creating academic timetables manually requires balancing subjects, faculty availability, classrooms, periods, and scheduling constraints. Develop a solution that generates a timetable from the given requirements while minimizing scheduling conflicts and highlighting any constraints that cannot be satisfied."""
+    },
+    {
+        "code": "PS16",
+        "title": "Smart Document Assistant",
+        "description": """Organizations and individuals often need to extract, organize, and understand information from lengthy documents. Build a solution that accepts documents, extracts relevant information, answers questions based on the provided content, and presents the information in a structured and understandable form."""
+    },
+    {
+        "code": "PS17",
+        "title": "Smart Parking Management",
+        "description": """Finding available parking spaces can be time-consuming, especially in crowded areas. Build a solution that detects available and occupied parking spaces, helps users identify suitable parking locations, and provides real-time parking status."""
     },
 ]
 
